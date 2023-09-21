@@ -1,2 +1,10 @@
 # requirements.txt
 gsheetsdb==0.1.13
+plotly=5.17.0
+pandas=2.1.1
+google=3.0.0
+
+
+# from collections import defaultdict
+# from google.oauth2 import service_account
+# import pandas as pd
