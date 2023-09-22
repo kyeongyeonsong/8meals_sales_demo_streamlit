@@ -1,8 +1,8 @@
 # requirements.txt
 gsheetsdb==0.1.13
-plotly=5.17.0
-pandas=2.1.1
-google-auth=2.23.0
+plotly==5.17.0
+pandas==2.1.1
+google-auth==2.23.0
 
 
 # from collections import defaultdict
