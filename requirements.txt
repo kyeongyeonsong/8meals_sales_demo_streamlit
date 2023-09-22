@@ -3,3 +3,4 @@ gsheetsdb
 plotly
 pandas
 google-auth
+pyparsing
