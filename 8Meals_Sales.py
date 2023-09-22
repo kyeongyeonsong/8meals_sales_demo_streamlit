@@ -1,5 +1,5 @@
 import streamlit as st
-import plotly.express as px
+#import plotly.express as px
 from collections import defaultdict
 from google.oauth2 import service_account
 from gsheetsdb import connect
