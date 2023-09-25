@@ -47,7 +47,7 @@ sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
 # Print results.
-st.write(rows[0])
+#st.write(rows[0])
 
 # Step 1: Aggregate data by '대분류' and sum '판매가'
 total_sales_by_category = defaultdict(int)
@@ -55,8 +55,8 @@ total_sales_by_category = defaultdict(int)
 for row in rows:
     category = row['대분류']
     price = row['매출']
-    total_sales_by_category[category] += price
-
+    if price is not None:
+        total_sales_by_category[category] += price
 
 # Step 3: Draw Line Chart
 st.line_chart(total_sales_by_category)
@@ -67,10 +67,17 @@ total_sales_by_subcategory = defaultdict(int)
 for row in rows:
     subcategory = row['중분류']
     price = row['매출']
-    total_sales_by_subcategory[subcategory] += price
+    if price is not None:
+         total_sales_by_subcategory[subcategory] += price
 
-# Convert the defaultdict to a DataFrame for plotting
-plot_data = pd.DataFrame(list(total_sales_by_subcategory.items()), columns=['중분류', '매출'])
+st.line_chart(total_sales_by_subcategory)
 
-# Create the bar chart in Streamlit
-st.bar_chart(plot_data.set_index('소분류'))
+total_sales_by_smallcategory = defaultdict(int)
+
+for row in rows:
+    smallcategory = row['소분류']
+    price = row['매출']
+    if price is not None:
+         total_sales_by_smallcategory[smallcategory] += price
+
+st.line_chart(total_sales_by_smallcategory)
